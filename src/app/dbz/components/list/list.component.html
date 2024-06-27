@@ -1,0 +1,32 @@
+<h4>Listado</h4>
+<ul class="list-group">
+  <li *ngFor="let character of characterList;
+  let i = index;
+  let isFirst = first;
+  let isLast = last;
+  let isEven = even;
+  let isOdd = odd;"
+
+  class="list-group-item d-flex justify-content-between align-items-center"
+  [ngClass]="{
+    'list-group-item-dark': isLast,
+    'list-group-item-primary': isEven,
+  }"> <!--Ese index es un objeto que está definido por default en nuestro @nfgor, lo que hacemos es extraer ese valor para que los elementos de la lista se vayan enumerando por posición-->
+  <!--Con ese isfirst y islast se evalúa para saber cuál es el primer y último elemento, isEven es para saber cuál es par e isOdd es para saber cuál es impar-->
+  <!--Con ese [ngClass] le agregamos clases de forma condicional en nuestro html-->
+
+  <div>
+    <span class="text-primary">{{ i + 1 }}. </span> <!--Con esto ya esos elementos se van a enumerar de 1 en adelante-->
+    <span>{{ character.name }} - </span>
+    <strong> power: </strong>
+    <span>{{ character.power }} <!--Hacemos la desestructurazión, y la hacemos acá, ya que en el *ngfor no funciona--></span>
+
+    <!-- <span>Es el primero: {{ isFirst }} </span>
+    <span>Es el Último: {{ isLast }} </span>
+    <span>Es par {{ isEven }} </span>
+    <span>Es impar: {{ isOdd }} </span> -->
+  </div>
+
+    <button (click)="onDeleteCharacter( character.id )" class="btn btn-danger">X</button>
+  </li>
+</ul>

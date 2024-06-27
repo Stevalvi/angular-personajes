@@ -1,0 +1,15 @@
+<h1>DBZ Personajes</h1>
+<hr>
+
+<div class="row">
+  <div class="col">
+
+    <dbz-list [characterList]="characters" (onDelete)="onDeleteCharacter($event)"></dbz-list> <!--Con esto le asignamos ese componente de MainPageComponent y toma los valores que definimos en nuestra instancia de la interface del archivo list.component.ts, y al colocarle [characterList] eso toma solo el tipo de valor, ya sea un arreglo vacío o la instancia que es characters-->
+    <!--mandamos a llamar (onDelete)="" cuando se mande a llamar ese evento de onDeleteCharacter. A lo último agregamos el dbzService que es el servicio que contiene la información o la lógica para que la aplicación funcione.-->
+  </div>
+
+  <div class="col">
+
+    <dbz-add-character (onNewCharacter)="onNewCharacter($event)"></dbz-add-character> <!--Queremos escuchar el evento cuando nuerstro dbz-add-character emita un nuevo personaje. Luego le decimos que vamos a recibir ese objeto de this.onNewCharacter.emit(this.character); del archivo add-character.component.ts con $event, osea de tipo Character-->
+  </div>
+</div>

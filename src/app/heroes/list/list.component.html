@@ -1,0 +1,29 @@
+<h3>Listado de Héroes</h3>
+
+
+<!--*ngIf="deletedHero Básicamente eso es todo lo que tenemos que poenr porque es un valor falso-->
+<!--Si la condición se cumple, va a mostrar lo que hay en el div, pero si no se cumple se ejecuta el else nothingWasDeleted-->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Héroe borrado <small class="text-danger"> {{ deletedHero }} </small></h3>
+</div>
+
+<!--Con este *ngIf="!deletedHero nos aseguramos que se elimine este No ha borrado nada cuando hayamos eliminado esos héroes-->
+<!--Ese nothingWasDeleted se le conoce en angular como una referencia local, entonces lo que le estamos diciendo es que si no se cumple ese deleteHero del div de arriba, se ejecuta ese elemento de nothingWasDeleted que tenga esa referencia local que en este caso es #nothingWasDeleted-->
+<ng-template #nothingWasDeleted> <!--Este ng-template es como tener un div, pero básicamente no se crea, simplemente cuando llegue el momento, muestra su contenido que en este caso es el h3.-->
+  <h3 *ngIf="!deletedHero">No ha borrado nada.</h3>
+</ng-template>
+
+
+<!--Conectamos ese botón con la función-->
+<!--Le decimos que solo se va a mostrar si el largo de los elementos que tenemos ahí es mayor a 0-->
+<button
+*ngIf="heroNames.length > 0"
+(click)="removeLastHero()" class="btn btn-outline-danger">
+  Borrar último héroe
+</button>
+
+
+<!--Lo que vamos a hacer será que con le ngfor y el public heroNames del archivo list.components.html será iterar sobre ese arreglo de los heroes e ir generando las listas con este ngfor en base a esos nombres-->
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">{{ name }}</li>
+</ul>

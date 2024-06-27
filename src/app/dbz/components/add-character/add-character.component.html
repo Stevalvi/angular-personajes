@@ -1,0 +1,19 @@
+<h4>Agregar Personaje</h4>
+<form class="row" (ngSubmit)="emitCharacter()"> <!--Ese ngSubmit ayuda a la propagación del formulario, ayuda a evitar que se recargue el navegador web, esto se hace cuando el formulario ya está listo para guardar esos datos, ya sea en el backend-->
+
+  <input type="text" [(ngModel)]="character.name"
+  name="name"
+  class="form-control mb-2" placeholder="Nombre"> <!--Con ese [(ngModel)]="Character.name" estamos asociando un evento y un atributo, ya que los atributos recordemos que se asocian con [] y los eventos con (). Con ese código lo que hacemos es que cuando se haga un ajuste de valor en este input o en el archivo de typescript de add-character.component.ts, en ambos casos se verán reflejados esos cambios-->
+  <!--Para que funcione ese [(ngModel)] debemos importar FormsModule en el dbz.module.ts osea en el módulode este componente de dbz-->
+
+  <input type="number" [(ngModel)]="character.power"
+  name="power"
+  class="form-control mb-2" placeholder="Poder">
+
+  <button type="submit" class="btn btn-primary">
+    Agregar
+  </button>
+
+  <!-- <pre>{{ character | json }}</pre>  -->
+  <!--Como ya tenemos acceso a esos valores de los input con el [(ngModal)], le agregamos a character osea la instancia, le agregamos el pipe que es | y le decimos que es de tipo json ya que es un objeto-->
+ </form>
